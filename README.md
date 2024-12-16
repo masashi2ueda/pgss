@@ -1,7 +1,3 @@
-Here's a sample `README.md` file that explains how to use the `pgss` package, as described in your example:
-
----
-
 # `pgss` - Page-Specific SessionState for Streamlit
 
 The `pgss` package provides an easy way to manage session states in Streamlit applications on a per-page basis. By using `PageSessionState`, you can ensure that variables are kept consistent across different pages, even if they have the same variable names. This package is perfect for managing page-specific data without interfering with other pages.
