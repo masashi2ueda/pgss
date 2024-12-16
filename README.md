@@ -1,0 +1,2 @@
+# pgss
+PageSessionState
