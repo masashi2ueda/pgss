@@ -20,6 +20,9 @@ class PageSessionState:
     def _get_sesseion_value(self, name):
         sname = self._name2session_name(name)
         return st.session_state[sname]
+    
+    def __call__(self, key: Key) -> Key:
+        return self._name2session_name(name=key)
 
     def __setitem__(self, key: Key, value: Any) -> None:
         key = str(key)

@@ -9,10 +9,9 @@ You can install `pgss` using `pip`:
 ```bash
 pip install pgss
 ```
-
 ## Usage
 
-Once installed, you can use the `PageSessionState` class to manage session states for each page in your Streamlit app. Here's an example:
+Once installed, you can use the [PageSessionState](http://_vscodecontentref_/1) class to manage session states for each page in your Streamlit app. Here's an example:
 
 ```python
 import streamlit as st
@@ -22,7 +21,7 @@ from pgss import PageSessionState  # Import the PageSessionState class
 pss = PageSessionState(__file__)
 
 # Initialize the session state variable if it does not exist
-pss.set_if_not_exist({"count": 1})
+pss.set_if_not_exist({"count": 1, "text": ""})
 
 # Create a button to increment the counter
 if st.button("Increment"):
@@ -30,6 +29,13 @@ if st.button("Increment"):
 
 # Display the current value of the count variable
 st.write(f"Count: {pss['count']}")
+
+# Use pss(name) to generate a unique key for the text input
+if text := st.text_input("Input text", value=pss.text, key=pss("text_key")):
+    pss.text = text
+
+st.write(f"pss.text_key: {pss.text_key}")
+st.write(f"pss.text: {pss.text}")
 ```
 
 ### How it Works
@@ -42,6 +48,8 @@ st.write(f"Count: {pss['count']}")
 
 3. **Persistent Session State**:  
    Session state variables are preserved as long as the user is on the same page, making it easy to store and update data across user interactions without losing it between reruns.
+4. **Generating Session State Names**:
+   The pss(name) method allows you to generate session state names dynamically. This is useful for creating unique keys for Streamlit widgets, ensuring that the session state is correctly managed.
 
 ### Example Use Case
 
