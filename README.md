@@ -9,6 +9,7 @@ You can install `pgss` using `pip`:
 ```bash
 pip install pgss
 ```
+
 ## Usage
 
 Once installed, you can use the [PageSessionState](http://_vscodecontentref_/1) class to manage session states for each page in your Streamlit app. Here's an example:
@@ -22,6 +23,9 @@ pss = PageSessionState(__file__)
 
 # Initialize the session state variable if it does not exist
 pss.set_if_not_exist({"count": 1, "text": ""})
+# or set as usual
+# if "count" not in pss:
+#     pss["count"] = 1
 
 # Create a button to increment the counter
 if st.button("Increment"):
@@ -37,18 +41,29 @@ if text := st.text_input("Input text", value=pss.text, key=pss("text_key")):
 st.write(f"pss.text_key: {pss.text_key}")
 st.write(f"pss.text: {pss.text}")
 ```
+Adding Keys to Session State
+You can add keys to the session state if they do not already exist using the following method:
+
 
 ### How it Works
 
 1. **Page-Specific SessionState**:  
    By creating an instance of `PageSessionState` using the current file (`__file__`), you ensure that the session state is unique to the page. This means that each page can maintain its own state, even if the same variable names are used on multiple pages.
 
-2. **Set Default Values**:  
+1. **Set Default Values**:  
    The `set_if_not_exist` method allows you to set default values for your session state variables if they haven't been initialized yet. This ensures that the state starts with predefined values.
 
-3. **Persistent Session State**:  
+1. **Adding Keys to Session State**:  
+   You can add keys to the session state if they do not already exist using the following method:
+   ```python
+   if "count" not in pss:
+       pss["count"] = 1
+   ```
+
+1. **Persistent Session State**:  
    Session state variables are preserved as long as the user is on the same page, making it easy to store and update data across user interactions without losing it between reruns.
-4. **Generating Session State Names**:
+
+1. **Generating Session State Names**:
    The pss(name) method allows you to generate session state names dynamically. This is useful for creating unique keys for Streamlit widgets, ensuring that the session state is correctly managed.
 
 ### Example Use Case
