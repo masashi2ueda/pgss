@@ -2,13 +2,13 @@ import streamlit as st
 
 from pgss import PageSessionState
 
-pss = PageSessionState(__file__)
+pss = PageSessionState("page1.py")
 
-# keyがない場合に追加方法1
+# how to add key 1
 if "count" not in pss:
     pss["count"] = 1
 
-# keyがない場合に追加する方法2
+# how to add key 2
 pss.set_if_not_exist({"count2": 1, "text": ""})
 
 if st.button("Increment"):

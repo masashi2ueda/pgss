@@ -19,7 +19,7 @@ import streamlit as st
 from pgss import PageSessionState  # Import the PageSessionState class
 
 # Create a PageSessionState object for the current page
-pss = PageSessionState(__file__)
+pss = PageSessionState("page1.py")
 
 # Initialize the session state variable if it does not exist
 pss.set_if_not_exist({"count": 1, "text": ""})
@@ -48,7 +48,7 @@ You can add keys to the session state if they do not already exist using the fol
 ### How it Works
 
 1. **Page-Specific SessionState**:  
-   By creating an instance of `PageSessionState` using the current file (`__file__`), you ensure that the session state is unique to the page. This means that each page can maintain its own state, even if the same variable names are used on multiple pages.
+   By creating an instance of `PageSessionState` using the current file (ex: `page.py`), you ensure that the session state is unique to the page. This means that each page can maintain its own state, even if the same variable names are used on multiple pages.
 
 1. **Set Default Values**:  
    The `set_if_not_exist` method allows you to set default values for your session state variables if they haven't been initialized yet. This ensures that the state starts with predefined values.

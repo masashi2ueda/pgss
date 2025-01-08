@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pgss',
-    version='0.2.2',
+    version='0.2.3',
     description='A package to manage session states per page in Streamlit',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',

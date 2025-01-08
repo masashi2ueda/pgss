@@ -2,7 +2,7 @@ import streamlit as st
 
 from pgss import PageSessionState
 
-pss = PageSessionState(__file__)
+pss = PageSessionState("page2.py")
 pss.set_if_not_exist({"count": 1, "text": ""})
 
 if st.button("Increment"):
